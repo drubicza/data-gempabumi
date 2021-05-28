@@ -29,11 +29,11 @@ Berikut kode baris pemrograman PHP yang digunakan dalam mengolah data-data XML g
 ### Kode Baris PHP untuk Mengolah Data `gempaterkini.xml`
 ```php
 <?php
-  $data = simplexml_load_file("https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml") or die ("Gagal ambil!");
+  // Kode Baris PHP untuk Mengolah Data gempaterkini.xml
+  $data = (array)simplexml_load_file("https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml") or die ("Gagal ambil!");
   echo "<h2>Daftar 15 Gempabumi M 5.0+</h2>";
-  $i = 1;
-  foreach($data->gempa as $gempaM5) {
-    echo "No: " . $i . "<br>";
+  foreach($data["gempa"] as $nomor => $gempaM5) {
+    echo "No: " . ++$nomor . "<br>";
     echo "Tanggal: " . $gempaM5->Tanggal . "<br>";
     echo "Jam: " .  $gempaM5->Jam . "<br>";
     echo "DateTime: " . $gempaM5->DateTime . "<br>";
@@ -44,7 +44,6 @@ Berikut kode baris pemrograman PHP yang digunakan dalam mengolah data-data XML g
     echo "Bujur: " . $gempaM5->Bujur . "<br>";
     echo "Lokasi: " . $gempaM5->Wilayah . "<br>";
     echo "Potensi: " . $gempaM5->Potensi . "<br><br>";
-    $i++;
   }
 ?>
 ```
@@ -52,11 +51,11 @@ Berikut kode baris pemrograman PHP yang digunakan dalam mengolah data-data XML g
 ### Kode Baris PHP untuk Mengolah Data `gempadirasakan.xml`
 ```php
 <?php
-  $data = simplexml_load_file("https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.xml") or die ("Gagal ambil!");
+  // Kode Baris PHP untuk Mengolah Data gempadirasakan.xml
+  $data = (array)simplexml_load_file("https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.xml") or die ("Gagal ambil!");
   echo "<h2>Daftar 15 Gempabumi Dirasakan</h2>";
-  $i = 1;
-  foreach($data->gempa as $gempaDirasakan) {
-    echo "No: " . $i . "<br>";
+  foreach($data["gempa"] as $nomor => $gempaDirasakan) {
+    echo "No: " . ++$nomor . "<br>";
     echo "Tanggal: " . $gempaDirasakan->Tanggal . "<br>";
     echo "Jam: " .  $gempaDirasakan->Jam . "<br>";
     echo "DateTime: " . $gempaDirasakan->DateTime . "<br>";
@@ -67,7 +66,6 @@ Berikut kode baris pemrograman PHP yang digunakan dalam mengolah data-data XML g
     echo "Bujur: " . $gempaDirasakan->Bujur . "<br>";
     echo "Lokasi: " . $gempaDirasakan->Wilayah . "<br>";
     echo "Dirasakan di Wilayah: " . $gempaDirasakan->Dirasakan . "<br><br>";
-    $i++;
   }
 ?>
 ```
